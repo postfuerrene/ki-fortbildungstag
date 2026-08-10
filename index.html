@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI als Teampartner in der Lehre — Vortragsbegleiter</title>
+<meta name="description" content="Interaktiver Vortragsbegleiter zum KI-Fortbildungstag am IBZ St. Marienthal — Prompts direkt kopieren.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR (Desktop/Beamer) ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand__eyebrow">Handout &amp; Prompt-Kompendium</span>
+      <h1 class="brand__title">KI als Teampartner in der Lehre</h1>
+      <p class="brand__subtitle">Vortragsbegleiter zum KI-Fortbildungstag am IBZ&nbsp;St.&nbsp;Marienthal</p>
+    </div>
+
+    <div class="event-meta">
+      <span><strong>13. August 2026</strong> · 09:00–14:30 Uhr</span>
+      <span>IBZ St. Marienthal, Tagungssaal</span>
+      <span>Leitung: René Seidel</span>
+    </div>
+
+    <div class="live-badge" id="live-badge">
+      <span class="dot"></span>
+      <span id="live-badge-text">Status wird geladen …</span>
+    </div>
+
+    <nav class="nav" id="nav" aria-label="Abschnitte"></nav>
+
+    <div class="sidebar-footer">
+      <div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-label" id="progress-label">Abschnitt 1 / 12</div>
+      </div>
+      <button class="ghost-btn" id="presentation-toggle" type="button">
+        <span aria-hidden="true">◱</span> Vortragsmodus
+      </button>
+      <button class="ghost-btn" id="print-btn" type="button">
+        <span aria-hidden="true">⎙</span> Drucken / PDF
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============ TOPBAR (Mobile/Teilnehmende) ============ -->
+  <div class="topbar">
+    <span class="topbar__title">KI als Teampartner in der Lehre</span>
+    <select id="topbar-select" aria-label="Abschnitt wählen"></select>
+  </div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="main">
+    <div class="content">
+
+      <!-- ===================================================== -->
+      <!-- START -->
+      <!-- ===================================================== -->
+      <section class="block" id="start" data-title="Start">
+        <div class="start-hero">
+          <span class="start-hero__eyebrow">Handout &amp; Prompt-Kompendium · 13. August 2026</span>
+          <h1>KI als Teampartner in der Lehre</h1>
+          <p class="start-hero__subtitle">Ein Begleitheft für den KI-Fortbildungstag am IBZ St. Marienthal</p>
+        </div>
+
+        <div class="meta-row">
+          <div class="meta-item">
+            <span class="meta-item__label">Datum</span>
+            <span class="meta-item__value">13. August 2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item__label">Zeit</span>
+            <span class="meta-item__value">09:00 – 14:30 Uhr</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item__label">Ort</span>
+            <span class="meta-item__value">IBZ St. Marienthal, Tagungssaal</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item__label">Leitung</span>
+            <span class="meta-item__value">René Seidel</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-item__label">Institution</span>
+            <span class="meta-item__value">Stiftung IBZ St. Marienthal / Scultetus Oberschule Görlitz</span>
+          </div>
+        </div>
+
+        <p class="body-text">
+          Diese Seite begleitet den Fortbildungstag live: Links folgen Sie dem Ablauf in der Seitenleiste,
+          jeder Abschnitt zeigt Text, Tabellen und Prompt-Beispiele so, wie sie im Vortrag besprochen werden.
+          Jeder Prompt-Kasten hat einen <strong>„Kopieren"-Button</strong> — Sie können ihn direkt in Ihr
+          KI-Tool einfügen und die rot markierten Platzhalter in eckigen Klammern durch Ihre eigenen Angaben
+          ersetzen.
+        </p>
+
+        <h2 class="subheading" style="margin-top:36px;">Ablauf des Tages</h2>
+        <div class="agenda" id="agenda"></div>
+
+        <p class="page-footer" style="text-align:left; margin-top:40px;">
+          René Seidel · r.seidel@ibz-marienthal.de · reneseidel.de — KI-Fortbildungstag · 13. August 2026
+        </p>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 01 · DAS GRUNDPRINZIP -->
+      <!-- ===================================================== -->
+      <section class="block" id="s01" data-title="Das Grundprinzip">
+        <div class="block__eyebrow">01 <span class="sep">·</span> Das Grundprinzip</div>
+        <h2 class="block__headline">KI ist kein Ersatz für pädagogisches Urteil.</h2>
+        <hr class="block__divider">
+
+        <p class="body-text">
+          Sie ist ein Teammitglied, das klar definierte Aufgaben übernimmt. Wer ihr Kontext und Rolle gibt,
+          bekommt nützliche Unterstützung. Wer sie ohne Führung nutzt, bekommt generische Ergebnisse und
+          mehr Nacharbeit.
+        </p>
+
+        <blockquote class="quote">„KI trifft keine pädagogischen Entscheidungen. Das tut der Mensch."</blockquote>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 02 · DAS ROLLENMODELL -->
+      <!-- ===================================================== -->
+      <section class="block" id="s02" data-title="Das Rollenmodell">
+        <div class="block__eyebrow">02 <span class="sep">·</span> Das Rollenmodell — vier KI-Rollen in der Lehre</div>
+        <h2 class="block__headline">Wer macht was im Team Mensch &amp; KI?</h2>
+        <hr class="block__divider">
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Rolle</th><th>Block</th><th>Was KI tut</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="role-cell">🎯 Der Stratege<span class="role-tag">(Mensch)</span></td>
+                <td><span class="badge-block">Block 1</span></td>
+                <td>Führt das Team. Gibt Kontext, Ziele und Grenzen vor. Das Teaching Statement ist das zentrale Führungsinstrument.</td>
+              </tr>
+              <tr>
+                <td class="role-cell">🔍 KI als Analyse-Unterstützer</td>
+                <td><span class="badge-block">Block 2</span></td>
+                <td>Macht Muster in Lernbedarfen sichtbar. Interpretiert nicht — liefert strukturierte Übersichten für die Lehrkraft.</td>
+              </tr>
+              <tr>
+                <td class="role-cell">🧭 KI als Planungsassistenz</td>
+                <td><span class="badge-block">Block 3</span></td>
+                <td>Übersetzt Teaching Statement und Lernbedarfe in konkrete, umsetzbare Unterrichtsentwürfe.</td>
+              </tr>
+              <tr>
+                <td class="role-cell">⚖️ KI als kritischer Moderator</td>
+                <td><span class="badge-block">Block 3</span></td>
+                <td>Hinterfragt den eigenen Plan. Macht Annahmen und blinde Flecken sichtbar — ohne zu glätten.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 03 · PROMPT-BAUSTEINE -->
+      <!-- ===================================================== -->
+      <section class="block" id="s03" data-title="Prompt-Bausteine">
+        <div class="block__eyebrow">03 <span class="sep">·</span> Prompt-Bausteine (für alle Blöcke)</div>
+        <h2 class="block__headline">Ein guter Prompt hat vier Zutaten.</h2>
+        <hr class="block__divider">
+
+        <p class="body-text">
+          Fehlt einer der Bausteine, wird die Antwort generisch. Die Reihenfolge ist nicht entscheidend —
+          die Vollständigkeit schon.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Baustein</th><th>Frage an mich</th><th>Beispiel</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="role-cell">Kontext</td>
+                <td>Was ist die Situation?</td>
+                <td>„Ich unterrichte eine 7. Klasse Oberschule, heterogene Gruppe, Thema nächste Woche: Bruchrechnung …"</td>
+              </tr>
+              <tr>
+                <td class="role-cell">Ziel</td>
+                <td>Was soll herauskommen?</td>
+                <td>„Ich brauche einen 45-Min-Entwurf mit Einstieg, Erarbeitung und Sicherung."</td>
+              </tr>
+              <tr>
+                <td class="role-cell">Rolle</td>
+                <td>Welche Perspektive soll KI einnehmen?</td>
+                <td>„Schreib aus der Sicht einer erfahrenen Lehrperson, die projektorientiert arbeitet."</td>
+              </tr>
+              <tr>
+                <td class="role-cell">Format</td>
+                <td>Wie soll die Ausgabe aussehen?</td>
+                <td>„Als Tabelle mit Zeit, Methode, Material und möglichen Stolpersteinen."</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <blockquote class="quote">Ein guter Prompt sagt der KI, wer du bist, was du brauchst und wie das Ergebnis aussehen soll.</blockquote>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 04 · DIALOGISCHES PROMPTEN -->
+      <!-- ===================================================== -->
+      <section class="block" id="s04" data-title="Dialogisches Prompten">
+        <div class="block__eyebrow">04 <span class="sep">·</span> Dialogisches Prompten</div>
+        <h2 class="block__headline">KI als Gesprächspartner — nicht als Formular-Ausfüller.</h2>
+        <hr class="block__divider">
+
+        <p class="body-text">
+          KI muss nicht auf einen vollständigen Prompt warten. Viele Aufgaben gelingen besser im Dialog:
+          die KI stellt Rückfragen, Sie antworten, sie arbeitet schrittweise mit Ihnen. Das hilft besonders
+          dann, wenn Sie selbst noch nicht genau wissen, was Sie brauchen.
+        </p>
+
+        <div class="compare">
+          <div class="compare__col compare__col--bad">
+            <div class="compare__label">Statt</div>
+            <div class="compare__quote">„Erstelle mir einen Unterrichtsentwurf zu Bruchrechnen."</div>
+          </div>
+          <div class="compare__col compare__col--good">
+            <div class="compare__label">Besser</div>
+            <div class="compare__quote">„Ich möchte eine Unterrichtsstunde zu Bruchrechnen für Klasse 6 planen. Stelle mir zunächst drei Fragen, die du brauchst, um mir einen passenden Entwurf zu erstellen."</div>
+          </div>
+        </div>
+
+        <div class="aside-box">
+          <div class="aside-box__label">Oder — schrittweise</div>
+          <p class="compare__quote" style="color:var(--ink-soft);">„Führe mich Schritt für Schritt durch die Planung — stelle jeweils eine Frage und warte auf meine Antwort, bevor du zur nächsten gehst."</p>
+        </div>
+
+        <div class="infobox infobox--info">
+          <span class="infobox__icon">💬</span>
+          <span class="infobox__text">Dieses Format funktioniert für Teaching Statements (Block 1), Feedback-Analyse (Block 2) und Unterrichtsplanung (Block 3) gleichermaßen. Die KI wird zum aktiven Gesprächspartner — nicht zum Formular-Ausfüller.</span>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 05 · BLOCK 1 -->
+      <!-- ===================================================== -->
+      <section class="block" id="s05" data-title="Block 1 — Teaching Statement &amp; Custom-KI">
+        <div class="block__eyebrow">05 <span class="sep">·</span> Block 1 — Teaching Statement &amp; Custom-KI <span class="block__time">· 09:15–10:30 Uhr</span></div>
+        <h2 class="block__headline">Ihre didaktische DNA als Grundlage aller Prompts.</h2>
+        <hr class="block__divider">
+
+        <p class="body-text">
+          Das Teaching Statement beschreibt, wie Sie lehren, was Sie für wichtig halten und was gute Lehre
+          für Sie bedeutet. Wenn Sie dieses Dokument der KI geben, entstehen Vorschläge, die zu
+          <strong>Ihnen</strong> passen — nicht zu einer durchschnittlichen Lehrperson.
+        </p>
+
+        <div class="aside-box">
+          <div class="aside-box__label">Das Statement deckt fünf Bereiche ab</div>
+          <ul>
+            <li><strong>Lehrüberzeugungen</strong> — Was beeinflusst meine pädagogische Haltung?</li>
+            <li><strong>Lehrmethoden</strong> — Welche Methoden nutze ich bevorzugt und warum?</li>
+            <li><strong>Lernergebnisse</strong> — Was sollen Lernende am Ende können oder verstehen?</li>
+            <li><strong>Aktivierungsstrategien</strong> — Wie gestalte ich aktive Beteiligung?</li>
+            <li><strong>Persönliche Entwicklung</strong> — Wie hat sich meine Lehre verändert?</li>
+          </ul>
+        </div>
+
+        <div class="prompt-box" data-prompt-id="p1-1" data-prompt-title="Teaching Statement im Dialog entwickeln" data-prompt-code="P1.1"></div>
+        <div class="prompt-box" data-prompt-id="p1-2" data-prompt-title="KI mit Teaching Statement konfigurieren" data-prompt-code="P1.2"></div>
+
+        <div class="infobox infobox--warning">
+          <span class="infobox__icon">📌</span>
+          <span class="infobox__text"><strong>PDF speichern.</strong> Das fertige Teaching Statement direkt als PDF sichern — es wird in Block 2 und Block 3 als Grundlage für alle weiteren Prompts benötigt. <strong>Custom GPT:</strong> Prompt P1.2 als Systeminstruktion hinterlegen, dann gilt er automatisch für alle weiteren Gespräche.</span>
+        </div>
+
+        <div class="dashed-box">
+          <span class="dashed-box__label">Vertiefung · Optional</span>
+          <p>Wer mag, richtet P1.2 direkt als eigenständigen KI-Assistenten ein (z.&nbsp;B. Custom GPT), statt das Statement bei jedem neuen Gespräch erneut einzufügen. So merkt sich die KI Ihre Lehrhaltung dauerhaft — wie ein eingearbeitetes Teammitglied.</p>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 06 · BLOCK 2 -->
+      <!-- ===================================================== -->
+      <section class="block" id="s06" data-title="Block 2 — KI und Lernbedarfsdiagnostik">
+        <div class="block__eyebrow">06 <span class="sep">·</span> Block 2 — KI und Lernbedarfsdiagnostik <span class="block__time">· 10:45–12:15 Uhr</span></div>
+        <h2 class="block__headline">Muster sichtbar machen — Deutung bleibt bei Ihnen.</h2>
+        <hr class="block__divider">
+
+        <p class="body-text">
+          KI kann helfen, Muster in Schüler:innen-Feedback sichtbar zu machen — Wiederholungen, Häufungen,
+          blinde Flecken. Sie interpretiert nicht, sie strukturiert. Die didaktische Einordnung bleibt
+          vollständig bei Ihnen.
+        </p>
+
+        <blockquote class="quote">„KI erkennt Muster. Der Mensch versteht Menschen — und entscheidet, wie sie genutzt werden."</blockquote>
+
+        <div class="aside-box">
+          <div class="aside-box__label">Lernvorlieben-Dimensionen</div>
+          <ul>
+            <li><strong>Tageszeit</strong> — Wann lernen sie am besten?</li>
+            <li><strong>Methoden</strong> — analytisch, kreativ oder praktisch?</li>
+            <li><strong>Wahrnehmungskanäle</strong> — visuell, auditiv, hands-on?</li>
+            <li><strong>Sozialformen</strong> — alleine, zu zweit, in Gruppen?</li>
+          </ul>
+          <p class="aside-box__note">Die Antworten helfen in Block 3, Methoden und Sozialformen gezielter auszuwählen — nicht nur inhaltlich zu differenzieren.</p>
+        </div>
+
+        <div class="prompt-box" data-prompt-id="p2-1" data-prompt-title="Welche Feedbackfragen brauche ich?" data-prompt-code="P2.1"></div>
+
+        <div class="infobox infobox--warning">
+          <span class="infobox__icon">⚠️</span>
+          <span class="infobox__text"><strong>Datenschutz vor der Eingabe.</strong> Keine echten Namen oder personenbezogenen Daten eingeben. Antworten vorab anonymisieren.</span>
+        </div>
+
+        <div class="infobox infobox--info">
+          <span class="infobox__icon">✈️</span>
+          <span class="infobox__text"><strong>Von der Frage zur Antwort.</strong> Bevor Sie die Antworten auswerten können, müssen die Fragen bei den Lernenden ankommen. Nutzen Sie ein einfaches Formular-Tool (z.&nbsp;B. Google Forms, Microsoft Forms) und lassen Sie sich bei Bedarf auch die Einladungs-Mail an die Klasse von der KI entwerfen — Kontext, Zweck der Befragung und Ton wie gewohnt im Prompt mitgeben.</span>
+        </div>
+
+        <h3 class="subheading">Vom Feedback zur konkreten Anpassung.</h3>
+        <p class="body-text">
+          Nach dem Einholen der Antworten zeigt KI Muster auf — und übersetzt sie anschließend in Anpassungen,
+          die zu Ihrem Teaching Statement passen.
+        </p>
+
+        <div class="prompt-box" data-prompt-id="p2-2" data-prompt-title="Feedback mit KI auswerten" data-prompt-code="P2.2"></div>
+        <div class="prompt-box" data-prompt-id="p2-3" data-prompt-title="Muster in Konsequenzen überführen" data-prompt-code="P2.3"></div>
+
+        <div class="infobox infobox--muted">
+          <span class="infobox__icon">💡</span>
+          <span class="infobox__text">Drei Anpassungen sind das Maximum — nicht das Ziel. Lieber eine Anpassung gut umgesetzt als drei halbherzig.</span>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 07 · BLOCK 3 -->
+      <!-- ===================================================== -->
+      <section class="block" id="s07" data-title="Block 3 — Planungsassistenz &amp; kritischer Moderator">
+        <div class="block__eyebrow">07 <span class="sep">·</span> Block 3 — KI als Planungsassistenz &amp; kritischer Moderator <span class="block__time">· 13:00–14:30 Uhr</span></div>
+        <h2 class="block__headline">Erst entwerfen — dann den eigenen Plan hinterfragen.</h2>
+        <hr class="block__divider">
+
+        <p class="body-text">
+          KI übernimmt den Erstentwurf — Sie bewerten, entscheiden und passen an. Danach drehen Sie den
+          Spieß um: die KI hinterfragt Ihren Plan und macht sichtbar, was Sie vielleicht übersehen haben.
+        </p>
+
+        <div class="quote-pair">
+          <blockquote class="quote" style="margin:0;">„KI liefert Optionen. Die Entscheidung, welcher Entwurf umgesetzt wird, liegt beim Menschen."</blockquote>
+          <blockquote class="quote" style="margin:0;">„KI kann hinterfragen. Der Mensch trägt die Konsequenzen."</blockquote>
+        </div>
+
+        <div class="prompt-box" data-prompt-id="p3-1" data-prompt-title="Unterrichtseinheit im Dialog planen" data-prompt-code="P3.1"></div>
+
+        <div class="infobox infobox--muted">
+          <span class="infobox__icon">💡</span>
+          <span class="infobox__text">Die Rückfragen der KI sind kein Hindernis — sie sind das Werkzeug. Je präziser Sie antworten, desto passender wird der Entwurf. Plant P3.3 nur ein, wenn P3.1 und P3.2 zügig laufen — sonst lieber Zeit für den Transfer-Teil am Ende reservieren.</span>
+        </div>
+
+        <h3 class="subheading">Den eigenen Plan kritisch prüfen — und für heterogene Gruppen anpassen.</h3>
+        <p class="body-text">
+          Der zweite Schritt in Block 3 ist die Selbstprüfung: Was übersieht der Entwurf, was hält er für
+          selbstverständlich? Testen Sie die KI dabei wie einen neuen Kollegen in der Probezeit: Stimmt der
+          Vorschlag mit Ihren Lernendendaten und Ihrem Teaching Statement überein — oder liefert er nur einen
+          generischen Standardentwurf? Der Bonus-Prompt P3.3 zeigt, wie sich derselbe Entwurf für
+          unterschiedliche Bedarfe innerhalb einer Klasse öffnen lässt — ohne in Parallelunterricht zu kippen.
+        </p>
+
+        <div class="prompt-box" data-prompt-id="p3-2" data-prompt-title="Reflexionsprompt: eigenen Plan kritisch prüfen" data-prompt-code="P3.2"></div>
+        <div class="prompt-box" data-prompt-id="p3-3" data-prompt-title="Differenzierung für heterogene Gruppen (Bonus)" data-prompt-code="P3.3"></div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 08 · QUALITÄTS-CHECKLISTE -->
+      <!-- ===================================================== -->
+      <section class="block" id="s08" data-title="Qualitäts-Checkliste">
+        <div class="block__eyebrow">08 <span class="sep">·</span> Qualitäts-Checkliste — bevor Sie einen KI-Output verwenden</div>
+        <h2 class="block__headline">Sechs Fragen, die jede KI-Antwort bestehen muss.</h2>
+        <hr class="block__divider">
+
+        <div class="checklist" id="checklist"></div>
+        <div class="checklist-summary" id="checklist-summary"></div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 09 · DATENSCHUTZ -->
+      <!-- ===================================================== -->
+      <section class="block" id="s09" data-title="Datenschutz">
+        <div class="block__eyebrow">09 <span class="sep">·</span> Datenschutz — Was darf in die KI, was nicht?</div>
+        <h2 class="block__headline">Zwei Listen, eine Grundregel.</h2>
+        <hr class="block__divider">
+
+        <div class="privacy-grid">
+          <div class="privacy-col privacy-col--ok">
+            <div class="privacy-col__title">✓ In Ordnung</div>
+            <ul>
+              <li>Anonymisierte Feedback-Antworten</li>
+              <li>Allgemeine Klassenbeschreibungen</li>
+              <li>Eigene Unterrichtsnotizen (ohne Namen)</li>
+              <li>Öffentliche Lehrplaninhalte</li>
+              <li>Fachliche Fragen ohne Schülerbezug</li>
+            </ul>
+          </div>
+          <div class="privacy-col privacy-col--no">
+            <div class="privacy-col__title">✗ Nicht in Ordnung</div>
+            <ul>
+              <li>Namen oder Noten einzelner Schüler:innen</li>
+              <li>Schulinterne vertrauliche Dokumente</li>
+              <li>Angaben aus Elterngesprächen</li>
+              <li>Sonderpädagogische Förderpläne</li>
+              <li>Passwörter oder Zugangsdaten</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-callout">
+          <strong>Grundregel</strong>
+          Was ich nicht per E-Mail an eine fremde Person schicken würde, gehört nicht in ein KI-Tool.
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- 10 · TRANSFER -->
+      <!-- ===================================================== -->
+      <section class="block" id="s10" data-title="Transfer">
+        <div class="block__eyebrow">10 <span class="sep">·</span> Transfer</div>
+        <h2 class="block__headline">Was nehme ich mit nach Hause?</h2>
+        <hr class="block__divider">
+        <p class="body-text">Ihre Notizen bleiben lokal auf diesem Gerät gespeichert (kein Server, kein Sync) — Sie können sie am Ende zusätzlich als Textdatei sichern.</p>
+
+        <div id="transfer"></div>
+
+        <div class="transfer-actions">
+          <button class="primary-btn" id="transfer-export" type="button">
+            <span aria-hidden="true">⬇</span> Als Textdatei speichern
+          </button>
+          <span class="save-status" id="transfer-status">Automatisch gespeichert · nur lokal auf diesem Gerät</span>
+        </div>
+
+        <p class="page-footer">René Seidel · r.seidel@ibz-marienthal.de · reneseidel.de — KI-Fortbildungstag · 13. August 2026</p>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- ALLE PROMPTS -->
+      <!-- ===================================================== -->
+      <section class="block" id="all-prompts" data-title="Alle Prompts">
+        <div class="block__eyebrow">★ <span class="sep">·</span> Sammelseite</div>
+        <h2 class="block__headline">Alle acht Prompts auf einen Blick.</h2>
+        <hr class="block__divider">
+        <p class="body-text">Zum schnellen Nachschlagen und Kopieren am Ende der Fortbildung — dieselben Prompts wie in den Blöcken 1–3, hier ohne Begleittext.</p>
+
+        <div id="all-prompts-list"></div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
