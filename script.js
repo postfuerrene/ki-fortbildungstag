@@ -187,6 +187,39 @@ sein — kein Parallelunterricht."`
   const CHECK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
 
   /* ---------------------------------------------------------
+     1b) ICON-SYSTEM — ersetzt Emoji durch konsistente SVG-Glyphen.
+     Die vier Rollen-Icons (strategist/analyst/planner/moderator)
+     bilden das wiederkehrende Signature-Element der Seite und
+     spiegeln das Rollenmodell aus Abschnitt 02.
+     --------------------------------------------------------- */
+
+  const ICON_STROKE = 'fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
+
+  const ICONS = {
+    strategist: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"></circle></svg>`,
+    analyst: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="15.3" y1="15.3" x2="20.5" y2="20.5"></line><path d="M8 10.5h5M10.5 8v5" stroke-width="1.2" opacity="0.6"></path></svg>`,
+    planner: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><circle cx="12" cy="12" r="8.5"></circle><path d="M15 8.5 L10.2 10.2 L9 15 L13.8 13.3 Z"></path></svg>`,
+    moderator: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><line x1="12" y1="3.5" x2="12" y2="18"></line><path d="M5 18h14"></path><path d="M4 8h6M15 8h6" stroke-width="1.6"></path><path d="M4 8l-2 4.2a3 3 0 0 0 6 0L6 8Z"></path><path d="M20 8l-2 4.2a3 3 0 0 0 6 0L22 8Z"></path></svg>`,
+    chat: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M4 5.5h16v10H9.5L5 19v-3.5H4Z"></path></svg>`,
+    pin: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M12 3.5c3 0 5.5 2.4 5.5 5.6 0 4-5.5 11.4-5.5 11.4S6.5 13.1 6.5 9.1C6.5 5.9 9 3.5 12 3.5Z"></path><circle cx="12" cy="9.2" r="2.1"></circle></svg>`,
+    warning: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M12 4 21.5 20.5H2.5Z"></path><line x1="12" y1="10" x2="12" y2="14.5"></line><circle cx="12" cy="17.3" r="0.9" fill="currentColor" stroke="none"></circle></svg>`,
+    send: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M21 3 3 10.5l7 2.7L21 3Z"></path><path d="M10 13.2 10 20 13.3 15.9 21 3Z"></path></svg>`,
+    bulb: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M9 17.5h6"></path><path d="M9.5 21h5"></path><path d="M12 3.5a5.7 5.7 0 0 0-3.2 10.4c.7.5 1.2 1.3 1.2 2.1h4a2.5 2.5 0 0 1 1.2-2.1A5.7 5.7 0 0 0 12 3.5Z"></path></svg>`,
+    'check-circle': `<svg viewBox="0 0 24 24" ${ICON_STROKE}><circle cx="12" cy="12" r="8.5"></circle><polyline points="8.3 12.3 10.8 14.8 15.8 9.5"></polyline></svg>`,
+    'x-circle': `<svg viewBox="0 0 24 24" ${ICON_STROKE}><circle cx="12" cy="12" r="8.5"></circle><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>`,
+    expand: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg>`,
+    print: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M6 9V3.5h12V9"></path><rect x="4" y="9" width="16" height="7.5" rx="1.2"></rect><path d="M6 14.5h12V20.5H6Z"></path></svg>`,
+    download: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M12 3.5v11.5"></path><polyline points="7.5 11 12 15.5 16.5 11"></polyline><path d="M4.5 17v3h15v-3"></path></svg>`
+  };
+
+  function renderIcons(root) {
+    (root || document).querySelectorAll('[data-icon]').forEach((el) => {
+      const name = el.getAttribute('data-icon');
+      if (ICONS[name]) el.innerHTML = ICONS[name];
+    });
+  }
+
+  /* ---------------------------------------------------------
      2) HELPERS
      --------------------------------------------------------- */
 
@@ -434,11 +467,18 @@ sein — kein Parallelunterricht."`
     opts = opts || {};
     let idx = sectionIds.indexOf(id);
     if (idx === -1) idx = 0;
+    const direction = idx >= currentIndex ? 'dir-forward' : 'dir-back';
     currentIndex = idx;
     const activeId = sectionIds[idx];
 
     document.querySelectorAll('section.block').forEach((sec) => {
-      sec.classList.toggle('is-active', sec.id === activeId);
+      const isActive = sec.id === activeId;
+      sec.classList.toggle('is-active', isActive);
+      sec.classList.remove('dir-forward', 'dir-back');
+      if (isActive && !opts.skipScroll) {
+        void sec.offsetWidth;
+        sec.classList.add(direction);
+      }
     });
     document.querySelectorAll('.nav__item').forEach((btn) => {
       btn.classList.toggle('is-active', btn.getAttribute('data-target') === activeId);
@@ -644,6 +684,7 @@ sein — kein Parallelunterricht."`
     renderAllPrompts();
     renderChecklist();
     renderTransfer();
+    renderIcons();
     wireNavigationEvents();
     initPresentationMode();
     initPrintButton();

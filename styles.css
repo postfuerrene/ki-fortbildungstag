@@ -4,7 +4,7 @@
    für Beamer-Projektion, Vortrag & Teilnehmenden-Smartphones.
    =========================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   /* Farben */
@@ -35,7 +35,7 @@
   --placeholder-bg: rgba(163, 48, 74, 0.12);
 
   /* Typografie */
-  --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 
@@ -92,6 +92,64 @@ button {
   font-family: var(--font-sans);
   cursor: pointer;
 }
+
+/* =================== ACCESSIBILITY: FOCUS & MOTION =================== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2.5px solid var(--bordeaux);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.sidebar :focus-visible,
+.topbar :focus-visible {
+  outline-color: #ff9db0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =================== ICON SYSTEM =================== */
+/* Eigenes SVG-Icon-Set statt Emoji — konsistente Strichstärke,
+   Farbe folgt currentColor. Die vier Rollen-Icons (Ziel/Lupe/
+   Kompass/Waage) sind das wiederkehrende Signature-Element. */
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.role-icon {
+  width: 19px;
+  height: 19px;
+  color: var(--bordeaux);
+  vertical-align: -4px;
+  margin-right: 2px;
+}
+.role-icon svg { width: 100%; height: 100%; }
+
+.role-icon--inline {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  vertical-align: -2px;
+}
+.role-icon--inline + .role-icon--inline { margin-left: -4px; }
 
 /* =================== APP SHELL =================== */
 
@@ -349,13 +407,18 @@ button {
 
 section.block {
   display: none;
-  animation: fadeIn 0.35s ease;
 }
 section.block.is-active { display: block; }
+section.block.is-active.dir-forward { animation: enterForward 0.3s ease; }
+section.block.is-active.dir-back { animation: enterBack 0.3s ease; }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes enterForward {
+  from { opacity: 0; transform: translateX(14px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes enterBack {
+  from { opacity: 0; transform: translateX(-14px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .block__eyebrow {
@@ -510,7 +573,16 @@ td.role-cell .role-tag {
   font-size: 0.96em;
 }
 
-.infobox__icon { flex-shrink: 0; font-size: 1.15em; line-height: 1.4; }
+.infobox__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.15em;
+}
+.infobox__icon svg { width: 100%; height: 100%; }
+.infobox--warning .infobox__icon { color: var(--bordeaux); }
+.infobox--info .infobox__icon { color: var(--petrol); }
+.infobox--muted .infobox__icon { color: var(--ink-faint); }
 .infobox__text { color: var(--ink-soft); }
 .infobox__text strong { color: var(--ink); }
 
@@ -633,11 +705,24 @@ td.role-cell .role-tag {
 /* =================== PROMPT BOX =================== */
 
 .prompt-box {
-  background: var(--petrol);
+  position: relative;
+  background: linear-gradient(165deg, var(--petrol) 0%, var(--petrol-dark) 100%);
   border-radius: var(--radius);
   margin: 20px 0 26px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
+}
+
+/* Sprechblasen-Spitze — macht den Kasten als "Ihre Wortmeldung an die KI" lesbar */
+.prompt-box::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: -8px;
+  width: 16px;
+  height: 8px;
+  background: var(--petrol);
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
 }
 
 .prompt-box__header {
@@ -646,10 +731,13 @@ td.role-cell .role-tag {
   justify-content: space-between;
   gap: 12px;
   padding: 13px 18px;
-  background: var(--petrol-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .prompt-box__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -657,11 +745,23 @@ td.role-cell .role-tag {
   color: #dce6ea;
 }
 
+.prompt-box__title::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff9db0;
+  flex-shrink: 0;
+}
+
 .prompt-box__id {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 600;
   color: #8fb3c4;
+  background: rgba(255,255,255,0.08);
+  padding: 2px 8px;
+  border-radius: 999px;
 }
 
 .prompt-box__body {
@@ -774,12 +874,17 @@ td.role-cell .role-tag {
 .privacy-col--ok { background: var(--green-tint); border-color: var(--green-tint-border); }
 .privacy-col--no { background: var(--bordeaux-tint); border-color: var(--bordeaux-tint-border); }
 .privacy-col__title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 14px 0 10px;
 }
+.privacy-col__title .icon { width: 16px; height: 16px; }
+.privacy-col__title .icon svg { width: 100%; height: 100%; }
 .privacy-col--ok .privacy-col__title { color: var(--green); }
 .privacy-col--no .privacy-col__title { color: var(--bordeaux); }
 .privacy-col ul { list-style: none; margin: 0; padding: 0; }

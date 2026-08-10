@@ -38,10 +38,10 @@
         <div class="progress-label" id="progress-label">Abschnitt 1 / 12</div>
       </div>
       <button class="ghost-btn" id="presentation-toggle" type="button">
-        <span aria-hidden="true">◱</span> Vortragsmodus
+        <span class="icon" data-icon="expand" aria-hidden="true"></span> Vortragsmodus
       </button>
       <button class="ghost-btn" id="print-btn" type="button">
-        <span aria-hidden="true">⎙</span> Drucken / PDF
+        <span class="icon" data-icon="print" aria-hidden="true"></span> Drucken / PDF
       </button>
     </div>
   </aside>
@@ -137,22 +137,22 @@
             </thead>
             <tbody>
               <tr>
-                <td class="role-cell">🎯 Der Stratege<span class="role-tag">(Mensch)</span></td>
+                <td class="role-cell"><span class="icon role-icon" data-icon="strategist"></span> Der Stratege<span class="role-tag">(Mensch)</span></td>
                 <td><span class="badge-block">Block 1</span></td>
                 <td>Führt das Team. Gibt Kontext, Ziele und Grenzen vor. Das Teaching Statement ist das zentrale Führungsinstrument.</td>
               </tr>
               <tr>
-                <td class="role-cell">🔍 KI als Analyse-Unterstützer</td>
+                <td class="role-cell"><span class="icon role-icon" data-icon="analyst"></span> KI als Analyse-Unterstützer</td>
                 <td><span class="badge-block">Block 2</span></td>
                 <td>Macht Muster in Lernbedarfen sichtbar. Interpretiert nicht — liefert strukturierte Übersichten für die Lehrkraft.</td>
               </tr>
               <tr>
-                <td class="role-cell">🧭 KI als Planungsassistenz</td>
+                <td class="role-cell"><span class="icon role-icon" data-icon="planner"></span> KI als Planungsassistenz</td>
                 <td><span class="badge-block">Block 3</span></td>
                 <td>Übersetzt Teaching Statement und Lernbedarfe in konkrete, umsetzbare Unterrichtsentwürfe.</td>
               </tr>
               <tr>
-                <td class="role-cell">⚖️ KI als kritischer Moderator</td>
+                <td class="role-cell"><span class="icon role-icon" data-icon="moderator"></span> KI als kritischer Moderator</td>
                 <td><span class="badge-block">Block 3</span></td>
                 <td>Hinterfragt den eigenen Plan. Macht Annahmen und blinde Flecken sichtbar — ohne zu glätten.</td>
               </tr>
@@ -238,7 +238,7 @@
         </div>
 
         <div class="infobox infobox--info">
-          <span class="infobox__icon">💬</span>
+          <span class="icon infobox__icon" data-icon="chat"></span>
           <span class="infobox__text">Dieses Format funktioniert für Teaching Statements (Block 1), Feedback-Analyse (Block 2) und Unterrichtsplanung (Block 3) gleichermaßen. Die KI wird zum aktiven Gesprächspartner — nicht zum Formular-Ausfüller.</span>
         </div>
       </section>
@@ -247,7 +247,7 @@
       <!-- 05 · BLOCK 1 -->
       <!-- ===================================================== -->
       <section class="block" id="s05" data-title="Block 1 — Teaching Statement &amp; Custom-KI">
-        <div class="block__eyebrow">05 <span class="sep">·</span> Block 1 — Teaching Statement &amp; Custom-KI <span class="block__time">· 09:15–10:30 Uhr</span></div>
+        <div class="block__eyebrow"><span class="icon role-icon role-icon--inline" data-icon="strategist"></span>05 <span class="sep">·</span> Block 1 — Teaching Statement &amp; Custom-KI <span class="block__time">· 09:15–10:30 Uhr</span></div>
         <h2 class="block__headline">Ihre didaktische DNA als Grundlage aller Prompts.</h2>
         <hr class="block__divider">
 
@@ -272,7 +272,7 @@
         <div class="prompt-box" data-prompt-id="p1-2" data-prompt-title="KI mit Teaching Statement konfigurieren" data-prompt-code="P1.2"></div>
 
         <div class="infobox infobox--warning">
-          <span class="infobox__icon">📌</span>
+          <span class="icon infobox__icon" data-icon="pin"></span>
           <span class="infobox__text"><strong>PDF speichern.</strong> Das fertige Teaching Statement direkt als PDF sichern — es wird in Block 2 und Block 3 als Grundlage für alle weiteren Prompts benötigt. <strong>Custom GPT:</strong> Prompt P1.2 als Systeminstruktion hinterlegen, dann gilt er automatisch für alle weiteren Gespräche.</span>
         </div>
 
@@ -286,7 +286,7 @@
       <!-- 06 · BLOCK 2 -->
       <!-- ===================================================== -->
       <section class="block" id="s06" data-title="Block 2 — KI und Lernbedarfsdiagnostik">
-        <div class="block__eyebrow">06 <span class="sep">·</span> Block 2 — KI und Lernbedarfsdiagnostik <span class="block__time">· 10:45–12:15 Uhr</span></div>
+        <div class="block__eyebrow"><span class="icon role-icon role-icon--inline" data-icon="analyst"></span>06 <span class="sep">·</span> Block 2 — KI und Lernbedarfsdiagnostik <span class="block__time">· 10:45–12:15 Uhr</span></div>
         <h2 class="block__headline">Muster sichtbar machen — Deutung bleibt bei Ihnen.</h2>
         <hr class="block__divider">
 
@@ -312,12 +312,12 @@
         <div class="prompt-box" data-prompt-id="p2-1" data-prompt-title="Welche Feedbackfragen brauche ich?" data-prompt-code="P2.1"></div>
 
         <div class="infobox infobox--warning">
-          <span class="infobox__icon">⚠️</span>
+          <span class="icon infobox__icon" data-icon="warning"></span>
           <span class="infobox__text"><strong>Datenschutz vor der Eingabe.</strong> Keine echten Namen oder personenbezogenen Daten eingeben. Antworten vorab anonymisieren.</span>
         </div>
 
         <div class="infobox infobox--info">
-          <span class="infobox__icon">✈️</span>
+          <span class="icon infobox__icon" data-icon="send"></span>
           <span class="infobox__text"><strong>Von der Frage zur Antwort.</strong> Bevor Sie die Antworten auswerten können, müssen die Fragen bei den Lernenden ankommen. Nutzen Sie ein einfaches Formular-Tool (z.&nbsp;B. Google Forms, Microsoft Forms) und lassen Sie sich bei Bedarf auch die Einladungs-Mail an die Klasse von der KI entwerfen — Kontext, Zweck der Befragung und Ton wie gewohnt im Prompt mitgeben.</span>
         </div>
 
@@ -331,7 +331,7 @@
         <div class="prompt-box" data-prompt-id="p2-3" data-prompt-title="Muster in Konsequenzen überführen" data-prompt-code="P2.3"></div>
 
         <div class="infobox infobox--muted">
-          <span class="infobox__icon">💡</span>
+          <span class="icon infobox__icon" data-icon="bulb"></span>
           <span class="infobox__text">Drei Anpassungen sind das Maximum — nicht das Ziel. Lieber eine Anpassung gut umgesetzt als drei halbherzig.</span>
         </div>
       </section>
@@ -340,7 +340,7 @@
       <!-- 07 · BLOCK 3 -->
       <!-- ===================================================== -->
       <section class="block" id="s07" data-title="Block 3 — Planungsassistenz &amp; kritischer Moderator">
-        <div class="block__eyebrow">07 <span class="sep">·</span> Block 3 — KI als Planungsassistenz &amp; kritischer Moderator <span class="block__time">· 13:00–14:30 Uhr</span></div>
+        <div class="block__eyebrow"><span class="icon role-icon role-icon--inline" data-icon="planner"></span><span class="icon role-icon role-icon--inline" data-icon="moderator"></span>07 <span class="sep">·</span> Block 3 — KI als Planungsassistenz &amp; kritischer Moderator <span class="block__time">· 13:00–14:30 Uhr</span></div>
         <h2 class="block__headline">Erst entwerfen — dann den eigenen Plan hinterfragen.</h2>
         <hr class="block__divider">
 
@@ -357,7 +357,7 @@
         <div class="prompt-box" data-prompt-id="p3-1" data-prompt-title="Unterrichtseinheit im Dialog planen" data-prompt-code="P3.1"></div>
 
         <div class="infobox infobox--muted">
-          <span class="infobox__icon">💡</span>
+          <span class="icon infobox__icon" data-icon="bulb"></span>
           <span class="infobox__text">Die Rückfragen der KI sind kein Hindernis — sie sind das Werkzeug. Je präziser Sie antworten, desto passender wird der Entwurf. Plant P3.3 nur ein, wenn P3.1 und P3.2 zügig laufen — sonst lieber Zeit für den Transfer-Teil am Ende reservieren.</span>
         </div>
 
@@ -396,7 +396,7 @@
 
         <div class="privacy-grid">
           <div class="privacy-col privacy-col--ok">
-            <div class="privacy-col__title">✓ In Ordnung</div>
+            <div class="privacy-col__title"><span class="icon" data-icon="check-circle"></span> In Ordnung</div>
             <ul>
               <li>Anonymisierte Feedback-Antworten</li>
               <li>Allgemeine Klassenbeschreibungen</li>
@@ -406,7 +406,7 @@
             </ul>
           </div>
           <div class="privacy-col privacy-col--no">
-            <div class="privacy-col__title">✗ Nicht in Ordnung</div>
+            <div class="privacy-col__title"><span class="icon" data-icon="x-circle"></span> Nicht in Ordnung</div>
             <ul>
               <li>Namen oder Noten einzelner Schüler:innen</li>
               <li>Schulinterne vertrauliche Dokumente</li>
@@ -436,7 +436,7 @@
 
         <div class="transfer-actions">
           <button class="primary-btn" id="transfer-export" type="button">
-            <span aria-hidden="true">⬇</span> Als Textdatei speichern
+            <span class="icon" data-icon="download" aria-hidden="true"></span> Als Textdatei speichern
           </button>
           <span class="save-status" id="transfer-status">Automatisch gespeichert · nur lokal auf diesem Gerät</span>
         </div>
