@@ -157,6 +157,7 @@ sein — kein Parallelunterricht."`
     { id: 's08', num: '08', label: 'Qualitäts-Checkliste' },
     { id: 's09', num: '09', label: 'Datenschutz' },
     { id: 's10', num: '10', label: 'Transfer' },
+    { id: 'kontakt', num: '', label: 'Kontakt & Mehr' },
     { id: 'all-prompts', num: '★', label: 'Alle Prompts' }
   ];
 
@@ -211,7 +212,8 @@ sein — kein Parallelunterricht."`
     'x-circle': `<svg viewBox="0 0 24 24" ${ICON_STROKE}><circle cx="12" cy="12" r="8.5"></circle><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>`,
     expand: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg>`,
     print: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M6 9V3.5h12V9"></path><rect x="4" y="9" width="16" height="7.5" rx="1.2"></rect><path d="M6 14.5h12V20.5H6Z"></path></svg>`,
-    download: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M12 3.5v11.5"></path><polyline points="7.5 11 12 15.5 16.5 11"></polyline><path d="M4.5 17v3h15v-3"></path></svg>`
+    download: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M12 3.5v11.5"></path><polyline points="7.5 11 12 15.5 16.5 11"></polyline><path d="M4.5 17v3h15v-3"></path></svg>`,
+    link: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M10.5 13.5a4.2 4.2 0 0 0 6.1.2l2.4-2.4a4.2 4.2 0 1 0-6-6l-1.3 1.3"></path><path d="M13.5 10.5a4.2 4.2 0 0 0-6.1-.2L5 12.7a4.2 4.2 0 1 0 6 6l1.3-1.3"></path></svg>`
   };
 
   function renderIcons(root) {
@@ -242,7 +244,12 @@ sein — kein Parallelunterricht."`
     return `
       <div class="prompt-box__header">
         <span class="prompt-box__title">${escapeHtml(title)}</span>
-        <span class="prompt-box__id">${escapeHtml(code)}</span>
+        <span class="prompt-box__header-right">
+          <span class="prompt-box__id">${escapeHtml(code)}</span>
+          <button class="copy-btn copy-btn--icon" type="button" data-copy-target="${id}" aria-label="Prompt ${escapeHtml(code)} kopieren">
+            ${COPY_ICON}
+          </button>
+        </span>
       </div>
       <div class="prompt-box__body">
         <pre class="prompt-text">${highlightPlaceholders(raw)}</pre>
@@ -503,9 +510,12 @@ sein — kein Parallelunterricht."`
   function updateProgress() {
     const fill = document.getElementById('progress-fill');
     const label = document.getElementById('progress-label');
+    const topbarProgress = document.getElementById('topbar-progress');
     const pct = ((currentIndex + 1) / SECTIONS.length) * 100;
+    const text = `Abschnitt ${currentIndex + 1} / ${SECTIONS.length}`;
     if (fill) fill.style.width = pct + '%';
-    if (label) label.textContent = `Abschnitt ${currentIndex + 1} / ${SECTIONS.length}`;
+    if (label) label.textContent = text;
+    if (topbarProgress) topbarProgress.textContent = text;
   }
 
   function updateFooterNav() {
@@ -573,19 +583,42 @@ sein — kein Parallelunterricht."`
     });
   }
 
+  function selectPromptText(box) {
+    const pre = box && box.querySelector('.prompt-text');
+    if (!pre || !window.getSelection) return;
+    const range = document.createRange();
+    range.selectNodeContents(pre);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
   async function handleCopyClick(btn) {
     const id = btn.getAttribute('data-copy-target');
     const text = PROMPTS[id];
     if (!text) return;
+    const box = btn.closest('.prompt-box');
     const ok = await copyText(text);
-    const label = btn.querySelector('.copy-btn__label');
-    const original = label ? label.textContent : '';
-    btn.classList.toggle('is-copied', ok);
-    btn.innerHTML = `${CHECK_ICON}<span class="copy-btn__label">${ok ? 'Kopiert ✓' : 'Fehler — bitte manuell kopieren'}</span>`;
-    setTimeout(() => {
-      btn.classList.remove('is-copied');
-      btn.innerHTML = `${COPY_ICON}<span class="copy-btn__label">${original || 'Kopieren'}</span>`;
-    }, 2000);
+
+    if (!ok) selectPromptText(box);
+
+    const siblingButtons = box ? box.querySelectorAll('.copy-btn[data-copy-target="' + id + '"]') : [btn];
+    siblingButtons.forEach((b) => {
+      const isIconOnly = b.classList.contains('copy-btn--icon');
+      const originalLabel = isIconOnly ? '' : 'Kopieren';
+      const originalAria = b.getAttribute('aria-label');
+      b.classList.toggle('is-copied', ok);
+      b.setAttribute('aria-label', ok ? 'Kopiert' : 'Kopieren fehlgeschlagen — Text ist markiert, mit Strg/Cmd+C kopieren');
+      b.innerHTML = isIconOnly
+        ? CHECK_ICON
+        : `${CHECK_ICON}<span class="copy-btn__label">${ok ? 'Kopiert ✓' : 'Fehler — Text markiert, Strg/Cmd+C'}</span>`;
+      setTimeout(() => {
+        b.classList.remove('is-copied');
+        b.innerHTML = isIconOnly ? COPY_ICON : `${COPY_ICON}<span class="copy-btn__label">${originalLabel}</span>`;
+        if (originalAria) b.setAttribute('aria-label', originalAria);
+        else b.removeAttribute('aria-label');
+      }, ok ? 2000 : 3500);
+    });
   }
 
   /* ---------------------------------------------------------
@@ -647,23 +680,30 @@ sein — kein Parallelunterricht."`
   function updateLiveBadge() {
     const badge = document.getElementById('live-badge');
     const text = document.getElementById('live-badge-text');
+    const topbarLive = document.getElementById('topbar-live');
+    const topbarText = document.getElementById('topbar-live-text');
     if (!badge || !text) return;
 
     const status = getCurrentBlockStatus();
     badge.classList.remove('is-live');
+    if (topbarLive) topbarLive.classList.remove('is-live');
 
+    let message;
     if (status.state === 'live') {
       badge.classList.add('is-live');
-      text.textContent = `${status.block.label.replace(/^Block \d — /, '')} läuft gerade`;
+      if (topbarLive) topbarLive.classList.add('is-live');
+      message = `${status.block.label.replace(/^Block \d — /, '')} läuft gerade`;
     } else if (status.state === 'before') {
-      text.textContent = 'Vor Beginn · startet 09:00 Uhr';
+      message = 'Vor Beginn · startet 09:00 Uhr';
     } else if (status.state === 'after') {
-      text.textContent = 'Fortbildungstag beendet';
+      message = 'Fortbildungstag beendet';
     } else if (status.state === 'pause' && status.next) {
-      text.textContent = `Pause · weiter ab ${status.next.time} Uhr`;
+      message = `Pause · weiter ab ${status.next.time} Uhr`;
     } else {
-      text.textContent = 'Pause';
+      message = 'Pause';
     }
+    text.textContent = message;
+    if (topbarText) topbarText.textContent = message;
 
     document.querySelectorAll('.nav__item').forEach((btn) => {
       const id = btn.getAttribute('data-target');

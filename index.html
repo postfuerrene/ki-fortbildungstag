@@ -48,8 +48,17 @@
 
   <!-- ============ TOPBAR (Mobile/Teilnehmende) ============ -->
   <div class="topbar">
-    <span class="topbar__title">KI als Teampartner in der Lehre</span>
-    <select id="topbar-select" aria-label="Abschnitt wählen"></select>
+    <div class="topbar__row">
+      <span class="topbar__title">KI als Teampartner in der Lehre</span>
+      <select id="topbar-select" aria-label="Abschnitt wählen"></select>
+    </div>
+    <div class="topbar__meta">
+      <span class="topbar__progress" id="topbar-progress">Abschnitt 1 / 12</span>
+      <span class="topbar__live" id="topbar-live">
+        <span class="dot" id="topbar-live-dot"></span>
+        <span id="topbar-live-text">Status wird geladen …</span>
+      </span>
+    </div>
   </div>
 
   <!-- ============ MAIN CONTENT ============ -->
@@ -64,6 +73,26 @@
           <span class="start-hero__eyebrow">Handout &amp; Prompt-Kompendium · 13. August 2026</span>
           <h1>KI als Teampartner in der Lehre</h1>
           <p class="start-hero__subtitle">Ein Begleitheft für den KI-Fortbildungstag am IBZ St. Marienthal</p>
+        </div>
+
+        <div class="team-rail">
+          <div class="team-rail__track" aria-hidden="true"></div>
+          <div class="team-rail__node">
+            <span class="icon role-icon role-icon--lg" data-icon="strategist"></span>
+            <span class="team-rail__label">Stratege<span>Mensch · immer</span></span>
+          </div>
+          <div class="team-rail__node">
+            <span class="icon role-icon role-icon--lg" data-icon="analyst"></span>
+            <span class="team-rail__label">Analyst<span>KI · Block 2</span></span>
+          </div>
+          <div class="team-rail__node">
+            <span class="icon role-icon role-icon--lg" data-icon="planner"></span>
+            <span class="team-rail__label">Planer<span>KI · Block 3</span></span>
+          </div>
+          <div class="team-rail__node">
+            <span class="icon role-icon role-icon--lg" data-icon="moderator"></span>
+            <span class="team-rail__label">Moderator<span>KI · Block 3</span></span>
+          </div>
         </div>
 
         <div class="meta-row">
@@ -456,6 +485,58 @@
         </div>
 
         <p class="page-footer">René Seidel · r.seidel@ibz-marienthal.de · reneseidel.de — KI-Fortbildungstag · 13. August 2026</p>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- KONTAKT & WEITERFÜHRENDES -->
+      <!-- ===================================================== -->
+      <section class="block" id="kontakt" data-title="Kontakt & Weiterführendes">
+        <div class="block__eyebrow"><span class="icon role-icon role-icon--inline" data-icon="link"></span>Kontakt <span class="sep">·</span> Weiterführendes</div>
+        <h2 class="block__headline">Fragen offen? Hier geht's weiter.</h2>
+        <hr class="block__divider">
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="aside-box__label">Kontakt</div>
+            <p class="body-text" style="margin-bottom:16px;">René Seidel<br>Stiftung IBZ St. Marienthal / Scultetus Oberschule Görlitz</p>
+            <ul class="contact-links">
+              <li><a href="mailto:r.seidel@ibz-marienthal.de">r.seidel@ibz-marienthal.de</a></li>
+              <li><a href="https://reneseidel.de" target="_blank" rel="noopener">reneseidel.de</a></li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <div class="aside-box__label">Handout zum Mitnehmen</div>
+            <p class="body-text" style="margin-bottom:16px;">Das vollständige Original-Handout als PDF — zum Ausdrucken oder Offline-Nachlesen.</p>
+            <a class="primary-btn" href="handout.pdf" download>
+              <span class="icon" data-icon="download" aria-hidden="true"></span> Handout (PDF) herunterladen
+            </a>
+          </div>
+        </div>
+
+        <h3 class="subheading">Weiterführende Fachartikel auf reneseidel.de</h3>
+        <div class="article-grid">
+          <a class="article-card" href="https://reneseidel.de/fachartikel/ki-rollenmodell/" target="_blank" rel="noopener">
+            <div class="article-card__title">KI-Rollenmodell</div>
+            <p class="article-card__desc">Der Mensch führt, die KI übernimmt klar definierte Aufgaben im Lehr-Team.</p>
+            <span class="article-card__go">Artikelserie lesen →</span>
+          </a>
+          <a class="article-card" href="https://reneseidel.de/fachartikel/addie/" target="_blank" rel="noopener">
+            <div class="article-card__title">ADDIE</div>
+            <p class="article-card__desc">Die fünf ADDIE-Phasen der Lehrplanung, mit KI konkreter und reflektierter gestaltet.</p>
+            <span class="article-card__go">Artikelserie lesen →</span>
+          </a>
+          <a class="article-card" href="https://reneseidel.de/fachartikel/ki-mentale-gesundheit/" target="_blank" rel="noopener">
+            <div class="article-card__title">KI &amp; Mentale Gesundheit</div>
+            <p class="article-card__desc">Was KI mit uns macht: über Vertrauen, Kontrolle und Resilienz im Arbeitsalltag.</p>
+            <span class="article-card__go">Artikelserie lesen →</span>
+          </a>
+          <a class="article-card" href="https://reneseidel.de/fachartikel/ki-workflows/" target="_blank" rel="noopener">
+            <div class="article-card__title">KI-Workflows</div>
+            <p class="article-card__desc">Ein echter Workflow aus der Lehrpraxis: fünf KI-Tools, eine didaktische Haltung, ein fertiger Kurs.</p>
+            <span class="article-card__go">Artikelserie lesen →</span>
+          </a>
+        </div>
       </section>
 
       <!-- ===================================================== -->
