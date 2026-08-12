@@ -38,10 +38,11 @@ du die drei wichtigsten Merkmale meiner Lehrhaltung in
 eigenen Worten zusammenfasst."`,
 
     'p2-1': `„Ich unterrichte [Fach, Klasse, Stufe].
-Ich möchte herausfinden, wo meine Lernenden gerade stehen
-und was sie für die nächste Unterrichtseinheit brauchen.
+Ich möchte vor der nächsten Unterrichtseinheit eine
+Bestandsaufnahme machen: Wo stehen meine Lernenden gerade,
+und was brauchen sie?
 
-Schlage mir geeignete Feedbackfragen vor.
+Schlage mir geeignete Fragen für diese Bestandsaufnahme vor.
 Berücksichtige dabei verschiedene Dimensionen:
 - Fachliche Lernhürden und Unsicherheiten
 - Lernvorlieben: Zu welcher Tageszeit lernen sie am besten?
@@ -49,10 +50,11 @@ Berücksichtige dabei verschiedene Dimensionen:
 - Wahrnehmungskanäle: visuell, auditiv, hands-on?
 - Sozialformen: alleine, zu zweit, in Gruppen?
 
-Die Fragen sollen in 5–10 Minuten beantwortet werden können
-und offene Antworten ermöglichen. Falls du weitere
-Informationen über meine Lerngruppe oder mein Fach brauchst,
-stelle vorher Rückfragen."`,
+Die Fragen sollen in 5–10 Minuten beantwortet werden können,
+offene Antworten ermöglichen und sprachlich verständlich für
+meine Klassenstufe bzw. Altersgruppe formuliert sein. Falls du
+weitere Informationen über meine Lerngruppe oder mein Fach
+brauchst, stelle vorher Rückfragen."`,
 
     'p2-2': `„Hier sind die anonymisierten Antworten meiner Klasse
 auf folgende Fragen: [Fragen einfügen]
@@ -135,7 +137,7 @@ sein — kein Parallelunterricht."`
   const PROMPT_META = [
     { id: 'p1-1', block: 'Block 1 · Teaching Statement & Custom-KI', title: 'Teaching Statement im Dialog entwickeln', code: 'P1.1' },
     { id: 'p1-2', block: 'Block 1 · Teaching Statement & Custom-KI', title: 'KI mit Teaching Statement konfigurieren', code: 'P1.2' },
-    { id: 'p2-1', block: 'Block 2 · KI und Lernbedarfsdiagnostik', title: 'Welche Feedbackfragen brauche ich?', code: 'P2.1' },
+    { id: 'p2-1', block: 'Block 2 · KI und Lernbedarfsdiagnostik', title: 'Welche Fragen brauche ich für die Bestandsaufnahme?', code: 'P2.1' },
     { id: 'p2-2', block: 'Block 2 · KI und Lernbedarfsdiagnostik', title: 'Feedback mit KI auswerten', code: 'P2.2' },
     { id: 'p2-3', block: 'Block 2 · KI und Lernbedarfsdiagnostik', title: 'Muster in Konsequenzen überführen', code: 'P2.3' },
     { id: 'p3-1', block: 'Block 3 · Planungsassistenz & kritischer Moderator', title: 'Unterrichtseinheit im Dialog planen', code: 'P3.1' },
