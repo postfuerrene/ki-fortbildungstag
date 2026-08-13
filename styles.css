@@ -1367,6 +1367,59 @@ td.role-cell .role-tag {
   font-weight: 600;
 }
 
+/* =================== TOOL-VERGLEICH =================== */
+
+.tool-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 8px 0 28px;
+}
+@media (max-width: 720px) {
+  .tool-compare { grid-template-columns: 1fr; }
+}
+
+.tool-card {
+  position: relative;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+
+.tool-card--recommended {
+  border-color: var(--bordeaux);
+  box-shadow: 0 0 0 1px var(--bordeaux);
+}
+
+.tool-card__badge {
+  position: absolute;
+  top: -11px;
+  left: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--bordeaux);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.tool-card__name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.tool-card__desc {
+  color: var(--ink-soft);
+  font-size: 0.93em;
+  margin: 0;
+}
+
 /* =================== FEEDBACK =================== */
 
 .feedback-layout {
