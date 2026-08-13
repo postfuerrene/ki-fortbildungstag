@@ -160,6 +160,7 @@ sein — kein Parallelunterricht."`
     { id: 's10', num: '10', label: 'Transfer' },
     { id: 'feedback', num: '', label: 'Feedback' },
     { id: 'kontakt', num: '', label: 'Kontakt & Mehr' },
+    { id: 'all-tools', num: '', label: 'Alle Tools' },
     { id: 'all-prompts', num: '★', label: 'Alle Prompts' }
   ];
 
@@ -215,6 +216,7 @@ sein — kein Parallelunterricht."`
     expand: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg>`,
     print: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M6 9V3.5h12V9"></path><rect x="4" y="9" width="16" height="7.5" rx="1.2"></rect><path d="M6 14.5h12V20.5H6Z"></path></svg>`,
     download: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M12 3.5v11.5"></path><polyline points="7.5 11 12 15.5 16.5 11"></polyline><path d="M4.5 17v3h15v-3"></path></svg>`,
+    gear: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><circle cx="12" cy="12" r="3.2"></circle><path d="M12 3.5v2.4M12 18.1v2.4M20.5 12h-2.4M5.9 12H3.5M17.7 6.3l-1.7 1.7M8 16l-1.7 1.7M17.7 17.7 16 16M8 8 6.3 6.3"></path></svg>`,
     link: `<svg viewBox="0 0 24 24" ${ICON_STROKE}><path d="M10.5 13.5a4.2 4.2 0 0 0 6.1.2l2.4-2.4a4.2 4.2 0 1 0-6-6l-1.3 1.3"></path><path d="M13.5 10.5a4.2 4.2 0 0 0-6.1-.2L5 12.7a4.2 4.2 0 1 0 6 6l1.3-1.3"></path></svg>`
   };
 

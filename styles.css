@@ -1420,6 +1420,28 @@ td.role-cell .role-tag {
   margin: 0;
 }
 
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.tool-card--link {
+  display: block;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+}
+.tool-card--link:hover { border-color: var(--bordeaux); transform: translateY(-2px); }
+
+.tool-card__go {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--bordeaux);
+  font-weight: 600;
+}
+
 /* =================== FEEDBACK =================== */
 
 .feedback-layout {
