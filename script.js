@@ -158,6 +158,7 @@ sein — kein Parallelunterricht."`
     { id: 's08', num: '08', label: 'Qualitäts-Checkliste' },
     { id: 's09', num: '09', label: 'Datenschutz' },
     { id: 's10', num: '10', label: 'Transfer' },
+    { id: 'feedback', num: '', label: 'Feedback' },
     { id: 'kontakt', num: '', label: 'Kontakt & Mehr' },
     { id: 'all-prompts', num: '★', label: 'Alle Prompts' }
   ];

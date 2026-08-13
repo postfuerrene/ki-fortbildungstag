@@ -1121,21 +1121,89 @@ td.role-cell .role-tag {
 
 /* =================== START PAGE =================== */
 
-.welcome-hero__image {
-  display: block;
+/* Willkommens-Hero: vollflächiges Bild über die gesamte Höhe des
+   Hauptbereichs, Text liegt direkt auf dem Bild — kein Scrollen nötig. */
+
+.main:has(> .content > #welcome.is-active) {
+  padding: 0;
+}
+.main:has(> .content > #welcome.is-active) .content {
+  max-width: none;
   width: 100%;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: var(--shadow-md);
-  object-fit: cover;
-  margin-bottom: 28px;
 }
 
-.welcome-eyebrow { margin-top: 0; }
+#welcome .block-footer { display: none; }
 
-.welcome-title { max-width: none; }
+.welcome-hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  overflow: hidden;
+  background: var(--petrol-dark);
+}
 
-.welcome-cta { margin-top: 6px; }
+.welcome-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.welcome-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5,39,56,0.92) 0%, rgba(5,39,56,0.62) 42%, rgba(5,39,56,0.05) 68%);
+}
+
+.welcome-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  max-width: 560px;
+  padding: 40px clamp(24px, 6vw, 72px);
+}
+
+.welcome-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ff9db0;
+  margin-bottom: 14px;
+}
+
+.welcome-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.15;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.welcome-subtitle {
+  font-size: 1.05em;
+  line-height: 1.6;
+  color: #dbe4e8;
+  margin: 0 0 28px;
+  max-width: 46ch;
+}
+
+.welcome-cta { width: fit-content; }
+
+@media (max-width: 720px) {
+  .welcome-hero { align-items: flex-end; }
+  .welcome-hero__scrim {
+    background: linear-gradient(0deg, rgba(5,39,56,0.94) 0%, rgba(5,39,56,0.75) 38%, rgba(5,39,56,0.1) 75%);
+  }
+  .welcome-hero__content { max-width: none; padding: 32px 24px 40px; }
+}
 
 .start-hero__eyebrow {
   font-family: var(--font-mono);
@@ -1297,6 +1365,52 @@ td.role-cell .role-tag {
   font-size: 12px;
   color: var(--bordeaux);
   font-weight: 600;
+}
+
+/* =================== FEEDBACK =================== */
+
+.feedback-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+@media (max-width: 780px) {
+  .feedback-layout { grid-template-columns: 1fr; }
+}
+
+.feedback-embed {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.feedback-embed iframe {
+  display: block;
+  width: 100%;
+  min-height: 640px;
+  border: none;
+}
+
+.feedback-qr {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+.feedback-qr__image {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 8px;
+  background: #fff;
 }
 
 /* =================== KONTAKT & WEITERFÜHRENDES =================== */
