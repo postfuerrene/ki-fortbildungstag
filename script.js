@@ -146,6 +146,7 @@ sein — kein Parallelunterricht."`
   ];
 
   const SECTIONS = [
+    { id: 'welcome', num: '', label: 'Willkommen' },
     { id: 'start', num: '', label: 'Start' },
     { id: 's01', num: '01', label: 'Das Grundprinzip' },
     { id: 's02', num: '02', label: 'Das Rollenmodell' },
@@ -565,7 +566,7 @@ sein — kein Parallelunterricht."`
     }
 
     window.addEventListener('popstate', () => {
-      const id = location.hash.replace('#', '') || 'start';
+      const id = location.hash.replace('#', '') || 'welcome';
       activateSection(id, { skipHash: true });
     });
 
@@ -731,7 +732,7 @@ sein — kein Parallelunterricht."`
     initPresentationMode();
     initPrintButton();
 
-    const initialId = location.hash.replace('#', '') || 'start';
+    const initialId = location.hash.replace('#', '') || 'welcome';
     activateSection(initialId, { skipHash: true, skipScroll: true });
 
     updateLiveBadge();

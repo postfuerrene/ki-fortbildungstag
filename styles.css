@@ -1121,6 +1121,22 @@ td.role-cell .role-tag {
 
 /* =================== START PAGE =================== */
 
+.welcome-hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+  margin-bottom: 28px;
+}
+
+.welcome-eyebrow { margin-top: 0; }
+
+.welcome-title { max-width: none; }
+
+.welcome-cta { margin-top: 6px; }
+
 .start-hero__eyebrow {
   font-family: var(--font-mono);
   font-size: 12.5px;
