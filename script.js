@@ -174,7 +174,7 @@ sein — kein Parallelunterricht."`
   ];
 
   const TRANSFER_ITEMS = [
-    { id: 't1', label: 'Mein Teaching Statement ist fertig und gespeichert' },
+    { id: 't1', label: 'So hilft mir mein fertiges Teaching Statement weiter' },
     { id: 't2', label: 'Eine Erkenntnis aus der Lernbedarfsdiagnostik' },
     { id: 't3', label: 'Das probiere ich in der ersten Woche konkret aus' },
     { id: 't4', label: 'Eine Frage, die heute offen geblieben ist' },
